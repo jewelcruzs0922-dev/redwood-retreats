@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg: #13100c;
+  --color-bg-warm: #1c1610;
+  --color-bg-card: #211c15;
+  --color-text: #f5efe6;
+  --color-text-muted: #b8a892;
+  --color-accent: #e8913a;
+  --color-amber: #d4a054;
+  --color-ember: #c4602a;
+  --color-gold: #f5c842;
+  --color-warmwhite: #fdf6eb;
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-bg);
+}
+
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  /* Warm ambient gradient on the whole page */
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(232, 145, 58, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(196, 96, 42, 0.03) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(212, 160, 84, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* Warm glow effect */
+.warm-glow {
+  position: relative;
+}
+.warm-glow::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(232, 145, 58, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Wood grain texture */
+.wood-texture {
+  position: relative;
+}
+.wood-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.02;
+  background: repeating-linear-gradient(
+    87deg,
+    transparent,
+    transparent 1px,
+    rgba(232, 145, 58, 0.3) 1px,
+    rgba(232, 145, 58, 0.3) 2px
+  );
+  pointer-events: none;
+}
+
+/* Ember glow pulse */
+@keyframes ember-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 145, 58, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(232, 145, 58, 0.2); }
+}
+.ember-pulse {
+  animation: ember-glow 4s ease-in-out infinite;
+}
+
+/* Flickering fire */
+@keyframes flicker {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.flicker {
+  animation: flicker 3s ease-in-out infinite;
+}
+
+/* Warm glow breathing — like a living ember */
+@keyframes breathe {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+/* PS5-style particle animations */
+@keyframes ps5Rise {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+  }
+  5% {
+    opacity: var(--particle-opacity, 0.3);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(15px) scale(1);
+    opacity: var(--particle-opacity, 0.4);
+  }
+  95% {
+    opacity: var(--particle-opacity, 0.2);
+  }
+  100% {
+    transform: translateY(-110vh) translateX(-10px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes ps5RiseGlow {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.5);
+    opacity: 0;
+    filter: blur(0px);
+  }
+  5% {
+    opacity: 0.8;
+  }
+  30% {
+    filter: blur(0px);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-20px) scale(1.2);
+    opacity: 1;
+    filter: blur(0.5px);
+  }
+  70% {
+    filter: blur(0px);
+  }
+  95% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(15px) scale(0.2);
+    opacity: 0;
+    filter: blur(1px);
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ember line pulse */
+@keyframes emberPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* Performance: contain layout for animated elements */
+contain-animation {
+  will-change: transform;
+  contain: layout style;
+}
+
+/* Hero animations */
+.hero-fade-in {
+  animation: heroFadeIn 1.5s ease forwards;
+}
+
+.hero-slide-up {
+  animation: heroSlideUp 1s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.hero-slide-up-delay {
+  animation: heroSlideUp 1s ease 0.5s forwards;
+  opacity: 0;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes heroSlideUp {
+  from { opacity: 0; transform: translateY(2.5rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll indicator pulse */
+@keyframes scrollPulse {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(32px); opacity: 0; }
+}
