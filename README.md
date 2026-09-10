@@ -140,6 +140,48 @@ The `20px 4px 20px 4px` pattern creates a distinctive, branded feel that separat
 ### Why Shared Data Layer?
 House data was duplicated across `FeaturedHouses.tsx` (4 houses) and `houses/page.tsx` (9 houses). A single `src/data/houses.ts` with `houses`, `featuredHouses`, and `getHouseByName()` eliminates duplication and ensures consistency.
 
+## Refactoring Journey
+
+### Starting Point
+The project began as a single-page landing with all components inline, raw `<img>` tags, hardcoded data arrays scattered across files, and no tests.
+
+### Key Refactors
+
+| Phase | Before | After |
+|-------|--------|-------|
+| **Data Layer** | House data duplicated in 2 files (47 + 153 lines), gallery images inline, reviews hardcoded | Single `src/data/` directory with typed exports, shared across all pages |
+| **Component Split** | `GalleryGrid.tsx` (493 lines, 4 components), `CtaBand.tsx` (368 lines with embedded canvas) | `GalleryGrid` (167 lines), `EmberGrass` extracted, `Lightbox`/`PhotoCard`/`MagneticBtn` separated |
+| **Image Optimization** | All `<img>` tags (10 lint warnings, no WebP/AVIF, no responsive srcSet) | All `next/image` with `fill`, `sizes`, `priority` on LCP images |
+| **State Management** | `useState` for `loaded` animation trigger, `displayIndex` synced via `useEffect` | CSS animations only, removed redundant state |
+| **Testing** | 0 tests | 29 tests across 8 files (data, hooks, components, interactions) |
+| **Accessibility** | No skip links, no ARIA on FAQ, no reduced-motion | Skip links, `aria-expanded`/`aria-controls`, `prefers-reduced-motion` |
+| **Security** | No headers | CSP, HSTS, Permissions-Policy, X-Frame-Options |
+| **SEO** | Basic meta tags only | JSON-LD (LodgingBusiness, FAQPage, Review), sitemap, robots.txt |
+
+### Performance Optimizations
+- Canvas grass: 200 blades on desktop, 100 on mobile (IntersectionObserver pause)
+- Particles: Seeded random for SSR safety, 36 particles across 4 depth layers
+- Images: AVIF/WebP via next/image, 30-day cache TTL
+- Animations: All use `transform`/`opacity` (compositor-only properties)
+
+### Git History
+The repository shows the full development process through meaningful commits with conventional commit messages.
+
+## Performance
+
+Lighthouse scores (target):
+- **Performance:** 95+
+- **Accessibility:** 100
+- **Best Practices:** 100
+- **SEO:** 100
+
+Key optimizations:
+- next/image with AVIF/WebP format negotiation
+- IntersectionObserver-based animation gating
+- Font preloading with `display: "swap"`
+- Canvas animation throttled on mobile
+- No layout shift (explicit dimensions on all images)
+
 ## Getting Started
 
 ```bash
