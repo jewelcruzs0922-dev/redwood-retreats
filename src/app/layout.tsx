@@ -58,6 +58,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <head>
+        <link rel="preconnect" href="https://images.pexels.com" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <meta name="theme-color" content="#13100c" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
