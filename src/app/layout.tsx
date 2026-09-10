@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -15,6 +15,12 @@ const inter = Inter({
   display: "swap",
   weight: ["300", "400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  themeColor: "#13100c",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Redwood Retreats | Modern A-Frame House Rentals",
@@ -60,7 +66,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://images.pexels.com" />
         <link rel="preconnect" href="https://images.unsplash.com" />
-        <meta name="theme-color" content="#13100c" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

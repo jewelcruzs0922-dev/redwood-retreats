@@ -297,7 +297,7 @@ export default function EmberGrass() {
     <canvas
       ref={canvasRef}
       className="absolute bottom-0 left-0 w-full pointer-events-none"
-      style={{ height: "200px", willChange: "transform" }}
+      style={{ height: "200px" }}
       aria-hidden="true"
     />
   );

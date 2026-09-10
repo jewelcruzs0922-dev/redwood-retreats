@@ -87,9 +87,13 @@ export default function Footer() {
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-accent/10 pt-8 sm:flex-row">
           <p className="text-xs text-text-muted/50">© {new Date().getFullYear()} Redwood Retreats. All rights reserved.</p>
           <div className="flex gap-6">
-            {["Instagram", "Twitter", "Facebook"].map((social) => (
-              <a key={social} href="#" className="text-[11px] tracking-wider text-text-muted/40 uppercase transition-colors hover:text-accent">
-                {social}
+            {[
+              { name: "Instagram", url: "https://instagram.com/redwoodretreats" },
+              { name: "Twitter", url: "https://twitter.com/redwoodretreats" },
+              { name: "Facebook", url: "https://facebook.com/redwoodretreats" },
+            ].map((social) => (
+              <a key={social.name} href={social.url} target="_blank" rel="noopener noreferrer" className="text-[11px] tracking-wider text-text-muted/40 uppercase transition-colors hover:text-accent">
+                {social.name}
               </a>
             ))}
           </div>

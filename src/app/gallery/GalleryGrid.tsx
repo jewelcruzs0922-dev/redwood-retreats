@@ -60,7 +60,7 @@ export default function GalleryGrid({ images }: { images: Img[] }) {
       <div className="mb-10 sm:mb-14 px-6 lg:px-16">
         <div className="flex items-center justify-between">
           <nav aria-label="Gallery categories">
-            <div className="flex gap-1 overflow-x-auto" role="tablist" style={{ scrollbarWidth: "none" }}>
+            <div className="flex gap-1 overflow-x-auto no-scrollbar" role="tablist">
               {cats.map((c) => (
                 <button
                   key={c}

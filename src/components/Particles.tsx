@@ -17,7 +17,7 @@ export default function Particles() {
       /* Far background — reduced count */
       ...Array.from({ length: 12 }, (_, i) => ({
         id: `far${i}`,
-        className: "absolute will-change-transform",
+        className: "absolute",
         style: {
           left: `${rand() * 100}%`,
           bottom: `${-10 + rand() * 20}%`,
@@ -33,7 +33,7 @@ export default function Particles() {
       /* Mid ground — reduced count */
       ...Array.from({ length: 10 }, (_, i) => ({
         id: `mid${i}`,
-        className: "absolute will-change-transform",
+        className: "absolute",
         style: {
           left: `${rand() * 100}%`,
           bottom: `${-5 + rand() * 15}%`,
@@ -48,7 +48,7 @@ export default function Particles() {
       /* Foreground — reduced count */
       ...Array.from({ length: 8 }, (_, i) => ({
         id: `near${i}`,
-        className: "absolute will-change-transform",
+        className: "absolute",
         style: {
           left: `${rand() * 100}%`,
           bottom: `${-5 + rand() * 10}%`,
@@ -63,7 +63,7 @@ export default function Particles() {
       /* Accent glow — reduced count */
       ...Array.from({ length: 6 }, (_, i) => ({
         id: `accent${i}`,
-        className: "absolute will-change-transform",
+        className: "absolute",
         style: {
           left: `${10 + rand() * 80}%`,
           bottom: `${-5 + rand() * 10}%`,
