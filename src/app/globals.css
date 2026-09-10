@@ -164,6 +164,16 @@ body {
   }
 }
 
+/* Mobile performance: reduce animations on small screens */
+@media (max-width: 767px) {
+  .ember-pulse {
+    animation-duration: 8s !important;
+  }
+  .flicker {
+    animation-duration: 6s !important;
+  }
+}
+
 /* Ember line pulse */
 @keyframes emberPulse {
   0%, 100% { opacity: 0.4; }

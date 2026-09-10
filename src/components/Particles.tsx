@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 function seededRandom(seed: number) {
   let s = seed;
@@ -11,11 +11,25 @@ function seededRandom(seed: number) {
 }
 
 export default function Particles() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const particles = useMemo(() => {
     const rand = seededRandom(42);
+    const farCount = isMobile ? 4 : 12;
+    const midCount = isMobile ? 3 : 10;
+    const nearCount = isMobile ? 2 : 8;
+    const accentCount = isMobile ? 2 : 6;
+
     return [
-      /* Far background — reduced count */
-      ...Array.from({ length: 12 }, (_, i) => ({
+      /* Far background */
+      ...Array.from({ length: farCount }, (_, i) => ({
         id: `far${i}`,
         className: "absolute",
         style: {
@@ -30,8 +44,8 @@ export default function Particles() {
           filter: "blur(0.5px)",
         },
       })),
-      /* Mid ground — reduced count */
-      ...Array.from({ length: 10 }, (_, i) => ({
+      /* Mid ground */
+      ...Array.from({ length: midCount }, (_, i) => ({
         id: `mid${i}`,
         className: "absolute",
         style: {
@@ -45,8 +59,8 @@ export default function Particles() {
           animation: `ps5Rise ${12 + rand() * 6}s linear ${rand() * 1.5}s infinite`,
         },
       })),
-      /* Foreground — reduced count */
-      ...Array.from({ length: 8 }, (_, i) => ({
+      /* Foreground */
+      ...Array.from({ length: nearCount }, (_, i) => ({
         id: `near${i}`,
         className: "absolute",
         style: {
@@ -60,8 +74,8 @@ export default function Particles() {
           animation: `ps5Rise ${9 + rand() * 5}s linear ${rand() * 1.5}s infinite`,
         },
       })),
-      /* Accent glow — reduced count */
-      ...Array.from({ length: 6 }, (_, i) => ({
+      /* Accent glow */
+      ...Array.from({ length: accentCount }, (_, i) => ({
         id: `accent${i}`,
         className: "absolute",
         style: {
@@ -77,7 +91,7 @@ export default function Particles() {
         },
       })),
     ];
-  }, []);
+  }, [isMobile]);
 
   return (
     <>
@@ -88,10 +102,10 @@ export default function Particles() {
           style={{
             top: "5%",
             left: "0%",
-            width: "700px",
-            height: "600px",
+            width: isMobile ? "350px" : "700px",
+            height: isMobile ? "300px" : "600px",
             background: "radial-gradient(circle, rgba(232, 145, 58, 0.09) 0%, rgba(196, 96, 42, 0.03) 40%, transparent 70%)",
-            animation: "breathe 7s ease-in-out infinite",
+            animation: isMobile ? "none" : "breathe 7s ease-in-out infinite",
           }}
         />
         <div
@@ -99,34 +113,38 @@ export default function Particles() {
           style={{
             top: "40%",
             right: "-5%",
-            width: "600px",
-            height: "600px",
+            width: isMobile ? "300px" : "600px",
+            height: isMobile ? "300px" : "600px",
             background: "radial-gradient(circle, rgba(212, 160, 84, 0.08) 0%, rgba(232, 145, 58, 0.03) 40%, transparent 70%)",
-            animation: "breathe 9s ease-in-out 0.5s infinite",
+            animation: isMobile ? "none" : "breathe 9s ease-in-out 0.5s infinite",
           }}
         />
-        <div
-          className="absolute"
-          style={{
-            bottom: "0%",
-            left: "10%",
-            width: "800px",
-            height: "500px",
-            background: "radial-gradient(ellipse, rgba(232, 145, 58, 0.07) 0%, rgba(245, 200, 66, 0.02) 45%, transparent 70%)",
-            animation: "breathe 11s ease-in-out 1s infinite",
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            top: "60%",
-            left: "40%",
-            width: "500px",
-            height: "500px",
-            background: "radial-gradient(circle, rgba(196, 96, 42, 0.04) 0%, transparent 60%)",
-            animation: "breathe 13s ease-in-out 1.5s infinite",
-          }}
-        />
+        {!isMobile && (
+          <>
+            <div
+              className="absolute"
+              style={{
+                bottom: "0%",
+                left: "10%",
+                width: "800px",
+                height: "500px",
+                background: "radial-gradient(ellipse, rgba(232, 145, 58, 0.07) 0%, rgba(245, 200, 66, 0.02) 45%, transparent 70%)",
+                animation: "breathe 11s ease-in-out 1s infinite",
+              }}
+            />
+            <div
+              className="absolute"
+              style={{
+                top: "60%",
+                left: "40%",
+                width: "500px",
+                height: "500px",
+                background: "radial-gradient(circle, rgba(196, 96, 42, 0.04) 0%, transparent 60%)",
+                animation: "breathe 13s ease-in-out 1.5s infinite",
+              }}
+            />
+          </>
+        )}
       </div>
 
       {/* Floating particles */}
