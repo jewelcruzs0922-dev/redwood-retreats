@@ -1,5 +1,8 @@
 # Redwood Retreats
 
+[![Live](https://img.shields.io/badge/live-redwood--retreats.vercel.app-000000?logo=vercel&logoColor=white)](https://redwood-retreats.vercel.app)
+[![License: MIT](https://img.shields.io/badge/license-MIT-2F6FEB)](LICENSE)
+
 A luxury A-frame cabin rental site — a front-end showcase built around a custom canvas animation, a small design system, and production-grade SEO.
 
 **Live:** https://redwood-retreats.vercel.app
