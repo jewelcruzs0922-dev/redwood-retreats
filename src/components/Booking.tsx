@@ -54,7 +54,7 @@ export default function Booking() {
   };
 
   return (
-    <section id="booking" className="relative bg-bg-warm py-28 lg:py-36 wood-texture" style={{ scrollMarginTop: "80px" }}>
+    <section id="booking" className="relative bg-bg-warm py-28 lg:py-36 wood-texture overflow-hidden" style={{ scrollMarginTop: "80px" }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-16 relative z-10">
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-20">
           {/* Left */}

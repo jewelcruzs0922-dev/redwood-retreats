@@ -44,12 +44,10 @@ export const metadata: Metadata = {
     description:
       "Modern A-frame houses designed for slow mornings, peaceful nights, and unforgettable stays.",
     type: "website",
-    url: "https://redwoodretreats.com",
+    url: "https://redwood-retreats.vercel.app",
     images: [
       {
-        url: "https://redwoodretreats.com/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://images.pexels.com/photos/14353714/pexels-photo-14353714.jpeg?w=1200&q=80",
         alt: "Redwood Retreats - Modern A-Frame House Rentals",
       },
     ],
@@ -74,7 +72,7 @@ export default function RootLayout({
               "@type": "LodgingBusiness",
               name: "Redwood Retreats",
               description: "Modern A-frame houses designed for slow mornings, peaceful nights, and unforgettable stays in the heart of nature.",
-              url: "https://redwoodretreats.com",
+              url: "https://redwood-retreats.vercel.app",
               priceRange: "$189-$399 per night",
               image: "https://images.pexels.com/photos/14353714/pexels-photo-14353714.jpeg?w=1200&q=80",
               address: {
