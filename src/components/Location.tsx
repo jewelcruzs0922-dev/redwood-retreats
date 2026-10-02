@@ -20,7 +20,7 @@ export default function Location() {
   const { ref: contentRef, isVisible: contentVisible } = useInView(0.1);
 
   return (
-    <section id="location" className="bg-bg py-24 lg:py-32" style={{ scrollMarginTop: "80px" }}>
+    <section id="location" className="bg-bg py-24 lg:py-32 overflow-hidden" style={{ scrollMarginTop: "80px" }}>
       <div className="mx-auto max-w-[1400px] px-6 lg:px-16">
         {/* Header */}
         <div
