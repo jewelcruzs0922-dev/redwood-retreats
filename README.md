@@ -7,6 +7,8 @@ A luxury A-frame cabin rental site — a front-end showcase built around a custo
 
 **Live:** https://redwood-retreats.vercel.app
 
+![The home page of the Redwood Retreats site](docs/home.jpg)
+
 ## Highlights
 
 - **Canvas grass field** (`EmberGrass`) — 200 blades on desktop, 100 on mobile, with layered wind simulation, soil gradients, cattail seed heads, and floating embers. Drawing is skipped when the element is off-screen via `IntersectionObserver`.
